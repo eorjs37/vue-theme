@@ -1,0 +1,35 @@
+@import '~@/assets/styles/_variables.scss';
+@import '~@/assets/styles/theme1.scss';
+@import '~@/assets/styles/theme2.scss';
+body {
+  margin: 0;
+}
+
+@function map-get-value($map, $key) {
+  @if map-has-key($map, $key) {
+    @return map-get($map, $key);
+  } @else {
+    @error "ERROR : Specified key #{key} does not  exists in the mapping #{map-get($map,name)}";
+  }
+}
+
+@mixin set-theme($map) {
+  .layout {
+    background-color: map-get-value($map, bg-color);
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+  }
+  .text {
+    color: map-get-value($map, text-color);
+  }
+}
+
+//set theme
+.theme1 {
+  @include set-theme($theme-1);
+}
+
+.theme2 {
+  @include set-theme($theme-2);
+}
