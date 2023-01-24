@@ -1,19 +1,19 @@
 <template>
-  <Header></Header>
-  <Component1></Component1>
-  <div class="container"></div>
-
   <div class="theme2">
-    <div class="layout"></div>
+    <Header></Header>
+    <Component1></Component1>
+    <Component2></Component2>
   </div>
 </template>
 
 <script>
 import Component1 from './components/Component1.vue';
+import Component2 from './components/Component2.vue';
 export default {
   name: 'App',
   components: {
     Component1,
+    Component2,
   },
 };
 </script>

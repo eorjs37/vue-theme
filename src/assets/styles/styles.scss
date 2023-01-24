@@ -1,27 +1,34 @@
-@import '~@/assets/styles/_variables.scss';
 @import '~@/assets/styles/theme1.scss';
 @import '~@/assets/styles/theme2.scss';
-body {
-  margin: 0;
-}
 
+// 해당 map의 key에 맞는 value를 return
 @function map-get-value($map, $key) {
   @if map-has-key($map, $key) {
     @return map-get($map, $key);
   } @else {
-    @error "ERROR : Specified key #{key} does not  exists in the mapping #{map-get($map,name)}";
+    @error "Error : Specified key #{key} does not exist in the mapping #{map-get($map,name)}";
   }
 }
 
+//공통에 들어갈 scss 작성
 @mixin set-theme($map) {
   .layout {
-    background-color: map-get-value($map, bg-color);
+    display: inline-block;
     width: 100px;
     height: 100px;
-    display: inline-block;
+    background-color: map-get-value($map, bg-color); //여기서 bg-color는 theme1.scss 또는 theme2.scss에 선언되어야 한다.
   }
-  .text {
+
+  .title {
+    font-weight: 200;
     color: map-get-value($map, text-color);
+  }
+
+  .test {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: map-get-value($map, bg-color); //여기서 bg-color는 theme1.scss 또는 theme2.scss에 선언되어야 한다.
   }
 }
 
